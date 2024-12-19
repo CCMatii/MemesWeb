@@ -111,3 +111,31 @@ export const subirMeme = async (token, titulo, descripcion, imagen) => {
     return [null, error.message || "Error al subir meme"];
   }
 };
+
+export const likeMeme = async (token, memeId) => {
+  try {
+    if (!token) {
+      return [null, "Debes iniciar sesión para dar like a un meme."];
+    }
+
+    const url = `${urlBase}/memes/${memeId}`;
+
+    const respuesta = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+    });
+
+    const { likes } = await respuesta.json();
+
+    if (!respuesta.ok) {
+      return [null, "Error al dar like a meme"];
+    }
+
+    return [likes, null];
+  } catch (error) {
+    return [null, error.message || "Error al subir meme"];
+  }
+};

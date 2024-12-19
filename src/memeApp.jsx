@@ -46,8 +46,8 @@ const MemeApp = () => {
       )}
       <h1 className="title">Galería de Memes</h1>
       <select onChange={manejarCambioDeOrden}>
-        <option value="top">Más likes</option>
-        <option value="new">Más recientes</option>
+        <option value="new">Reciente</option>
+        <option value="top">Mejor valorados</option>
       </select>
 
       {memes.length === 0 && !estaCargando && <p>No hay memes disponibles.</p>}

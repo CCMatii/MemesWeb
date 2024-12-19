@@ -43,3 +43,24 @@
   text-overflow: ellipsis;
   max-height: 20%;
 }
+
+.likey{
+  display: flex;
+  background-color: transparent;
+  color:black;
+  border-width: 0;
+}
+
+.likey p{
+  margin-top: 6%;
+  margin-left: 10px;
+  font-size: small;
+}
+
+.heart{
+  margin-top: 5%;
+  background-color: transparent;
+  font-size: large;
+  width: 40px;
+  padding: 1px;
+}

@@ -3,7 +3,7 @@ import { ContextoAutenticacion } from "../context/autenticacionContext";
 import { subirMeme } from "../services/memes";
 import './memeupload.css';
 
-const ModalSubirMeme = ({ visible, actualizaVisibilidad, actualizarMemes, filtroSeleccionado }) => {
+const ModalSubirMeme = ({ visible, actualizaVisibilidad, actualizarMemes }) => {
     const { credenciales, estaAutenticado } = useContext(ContextoAutenticacion);
   
     const [titulo, actualizaTitulo] = useState("");
@@ -35,7 +35,8 @@ const ModalSubirMeme = ({ visible, actualizaVisibilidad, actualizarMemes, filtro
             return;
           }
           actualizaVisibilidad(false);
-          actualizarMemes(filtroSeleccionado);
+          location.reload();
+          return false;
         }
       );
     };

@@ -15,10 +15,16 @@ select {
     align-items: center;
 }
 
-
 .botones {
-  display: flex;
-  gap: 10px;
+  display: block;
+  text-align: center;
   margin-bottom: 0px;
-  margin-left: 210%;
+}
+
+.login{
+  margin-right: 10px;
+  background-color: rgb(41, 38, 42);
+}
+.register{
+  background-color: rgb(41, 38, 42);
 }

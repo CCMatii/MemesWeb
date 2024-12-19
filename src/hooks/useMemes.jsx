@@ -6,23 +6,23 @@ const useMemes = () => {
   const [estaCargando, setEstaCargando] = useState(false);
   const [pagina, setPagina] = useState(1);
   const [hayMas, setHayMas] = useState(true);
-  const [sort, setSort] = useState("top");
+  const [sort, setSort] = useState("new");
 
-  const cargarMemes = async (paginaActual = pagina, criterioActual = sort) => {
-    if (!hayMas) return;
-
+  const cargarMemes = async () => {
+    if (!hayMas || estaCargando) return;
+  
     setEstaCargando(true);
-
-    const [data, error] = await obtenerMemes(criterioActual, paginaActual, 10);
+  
+    const [data, error] = await obtenerMemes(sort, pagina, 10);
     if (error) {
       console.error(error);
       setEstaCargando(false);
       return;
     }
-
+  
     if (data.length < 10) setHayMas(false);
-
-    setMemes((prevMemes) => [...prevMemes, ...data]);
+  
+    setMemes((prevMemes) => (pagina === 1 ? data : [...prevMemes, ...data]));
     setEstaCargando(false);
   };
 
