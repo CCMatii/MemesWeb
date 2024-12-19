@@ -14,25 +14,11 @@ select {
     justify-content: center;
     align-items: center;
 }
-.cabecera {
+
+
+.botones {
   display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  height: 60px;
-  padding: 0 20px; 
-}
-
-.title {
-  flex-grow: 1; 
-  text-align: center; 
-  color: white;
-}
-
-.login {
-  background-color: grey;
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  gap: 10px;
+  margin-bottom: 0px;
+  margin-left: 210%;
 }

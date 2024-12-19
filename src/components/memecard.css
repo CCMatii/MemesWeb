@@ -29,7 +29,7 @@
 .meme-card img {
   width: 100%;
   height: auto; 
-  max-height: 80%; /* La imagen puede ocupar hasta el 80% de la tarjeta */
+  max-height: 80%;
   object-fit: cover; 
   border-radius: 4px;
 }
@@ -41,5 +41,5 @@
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 20%; /* El párrafo ocupará el espacio restante */
+  max-height: 20%;
 }

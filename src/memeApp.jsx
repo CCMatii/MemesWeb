@@ -19,21 +19,20 @@ const MemeApp = () => {
   const { estaAutenticado } = useContext(ContextoAutenticacion);
 
   return (
-    <div className="meme-app">
-      <div className="cabecera">
-      <h1 className="title">Galería de Memes</h1>
+    <div className="meme-app">    
 
       {estaAutenticado ? (
         <p>Usuario logueado</p>
       ) : (
-        <div>
+        <div className="botones">
         <button className="login"
         onClick={() => setModalAutenticacionVisible(true)}>Ingresar</button>
         <button className="register"
         onClick={() => setModalRegistroVisible(true)}>Registrar</button>
         </div>
       )} 
-      </div>
+      <h1 className="title">Galería de Memes</h1>
+
       <select onChange={manejarCambioDeOrden}>
         <option value="top">Más likes</option>
         <option value="new">Más recientes</option>
