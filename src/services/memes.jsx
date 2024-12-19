@@ -67,3 +67,47 @@ export const registrar = async (usuario, contraseña) => {
     return [null, error.message];
   }
 };
+
+export const subirMeme = async (token, titulo, descripcion, imagen) => {
+  try {
+    if (!token) {
+      return [null, "Debes iniciar sesión para subir un meme."];
+    }
+
+    const url = `${urlBase}/memes/?title=${encodeURIComponent(
+      titulo,
+    )}&description=${encodeURIComponent(descripcion)}`;
+
+    const dataFormulario = new FormData();
+
+
+    if (imagen) {
+      if (imagen instanceof File) {
+        dataFormulario.append("file", imagen);
+      } else {
+        const respuesta = await fetch(imagen);
+        const archivoBlob = await respuesta.blob();
+        dataFormulario.append("file", archivoBlob, "meme.jpg");
+      }
+    } else {
+      return [null, "No se proporcionó una imagen para subir."];
+    }
+
+    const respuesta = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+      body: dataFormulario,
+    });
+
+    if (!respuesta.ok) {
+      return [null, "Error al subir meme"];
+    }
+
+    return ["Meme subido con éxito!", null];
+  } catch (error) {
+    return [null, error.message || "Error al subir meme"];
+  }
+};
